@@ -1,17 +1,10 @@
+//Dependencies
 const express = require('express')
 
 // CONFIGURATION
 require('dotenv').config()
 const PORT = process.env.PORT
 console.log(PORT)
-
-// DEPENDENCIES
-const express = require('express')
-
-// CONFIGURATION
-require('dotenv').config()
-const PORT = process.env.PORT
-const app = express()
 
 // ROUTES
 app.get('/', (req, res) => {
