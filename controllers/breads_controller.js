@@ -8,8 +8,7 @@ breads.get('/', (req, res) => {
     {
         breads: Bread
       } 
-  // res.send(Bread)
-})
+ })
 
 // SHOW
 breads.get('/:arrayIndex', (req, res) => {
