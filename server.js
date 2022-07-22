@@ -1,9 +1,10 @@
+//DEPENDENCIES
+const express = require('express')
+
 // CONFIGURATION
 require('dotenv').config()
-const express = require('express')
-const app = express()
 const PORT = process.env.PORT
-console.log(PORT)
+const app = express()
 
 // MIDDLEWARE
 app.use(express.static('public'))
