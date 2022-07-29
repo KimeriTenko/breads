@@ -4,33 +4,39 @@ const Bread = require('../models/bread.js')
 
 // INDEX
 breads.get('/', (req, res) => {
-    res.render('index',)
-      {
-        breads: Bread;
-        title: 'Index Page'
-      } 
+    Bread.find()
+      .then(foundBreads => {
+        res.render('index', {
+          breads: foundBreads,
+          title: 'Index Page'
+        })
+      })
  })
 
-// CREATE
-breads.post('/', (req, res) => {
-  if(req.body.hasGluten === 'on') {
-    req.body.hasGluten = 'true'
-  } else {
-    req.body.hasGluten = 'false'
-  }
-  Bread.push(req.body)
-  res.send(Bread)
+ module.exports = breads
+
+// NEW
+breads.get('/new', (req, res) => {
+  res.render('new')
+})
+
+// EDIT
+breads.get('/:indexArray/edit', (req, res) => {
+  res.render('edit', {
+      bread: Bread[req.params.indexArray],
+      index: req.params.indexArray
+  })
 })
 
 // SHOW
-breads.get('/:arrayIndex', (req, res) => {
-  if (Bread[req.params.arrayIndex]) {
-    res.render('Show', {
-      bread:Bread[req.params.arrayIndex]
+breads.get('/:id', (req, res) => {
+  Bread.findById(req.params.id)
+    .then(foundBread => {
+      res.render('show', {
+        bread: foundBread
+      })
     })
-  } else {
-    return res.render('404')
-  }
+    .catch(err => {
+      res.send('404')
+    })
 })
-
-module.exports = breads
