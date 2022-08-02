@@ -1,9 +1,10 @@
+// DEPENDENCIES
 const express = require('express')
 const baker = express.Router()
 const Baker = require('../models/baker.js')
 const bakerSeedData = require('../models/baker_seed.js')
 
-// index 
+// INDEX 
 baker.get('/', (req, res) => {
     Baker.find()
         .populate('breads')
@@ -12,7 +13,7 @@ baker.get('/', (req, res) => {
         })
 })
 
-// show 
+// SHOW 
 baker.get('/:id', (req, res) => {
     Baker.findById(req.params.id)
         .populate({
@@ -27,7 +28,7 @@ baker.get('/:id', (req, res) => {
         })
 })
 
-// delete
+// DELETE
 baker.delete('/:id', (req, res) => {
     Baker.findByIdAndDelete(req.params.id) 
       .then(deletedBaker => { 
@@ -40,4 +41,5 @@ baker.get('/data/seed', (req, res) => {
         .then(res.redirect('/breads'))
 })
 
+//EXPORT
 module.exports = baker

@@ -5,16 +5,18 @@ const { Schema } = mongoose
 
 // SCHEMA
 const bakerSchema = new Schema({
-    name: { type: String, required: true },
-    hasGluten: Boolean,
-    image: { type: String, default: 'http://placehold.it/500x500.png' },
-    baker: {
-      type: Schema.Types.ObjectID,
-      ref: 'Baker'
-    }
-},
+    name: {
+        type: String,
+        required: true,
+        enum: ['Rachel', 'Monica', 'Joey', 'Chandler', 'Ross', 'Phoebe']
+    }, 
+    startDate: {
+        type: Date,
+        required: true
+    },
+    bio: String
+}, { toJSON: { virtuals: true }})
 
- {toJSON: { virtuals: true }})
 
 // VIRTUALS 
 bakerSchema.virtual('breads', {
