@@ -1,7 +1,7 @@
 {
   "name": "breads",
   "version": "1.0.0",
-  "description": "",
+  "description": "Express Full CRUD with SSR JSX",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
